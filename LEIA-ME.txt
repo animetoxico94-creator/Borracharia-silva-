@@ -1,0 +1,19 @@
+BORRACHARIA SILVA — versão inicial gratuita
+
+Arquivos:
+- index.html: telas e funções do aplicativo web
+- manifest.webmanifest: configura instalação na tela inicial
+- sw.js: cache básico para funcionamento PWA
+
+WhatsApp configurado: +55 38 99854-7976
+
+Como testar:
+1. Abra index.html no computador para conferir o visual. Alguns recursos, como localização e instalação PWA, precisam de hospedagem HTTPS.
+2. Para permitir que clientes acessem por link, publique os arquivos em um serviço de hospedagem estática gratuito com HTTPS, como GitHub Pages.
+3. Depois de publicado, o cliente abre o link no Chrome do Android e escolhe "Adicionar à tela inicial" ou "Instalar app", quando essa opção estiver disponível.
+
+Observações:
+- Esta é uma versão inicial; o pedido é enviado pelo WhatsApp, não há painel administrativo nem banco de dados.
+- O botão de avaliação abre uma pesquisa do Google. Para direcionar diretamente à tela de avaliação, substitua o link pelo link de avaliação oficial do Perfil da Empresa.
+- O endereço informado foi preenchido com base nas informações fornecidas anteriormente; confirme antes de publicar.
+- O site precisa estar hospedado para que clientes acessem remotamente. O arquivo sozinho não fica online.

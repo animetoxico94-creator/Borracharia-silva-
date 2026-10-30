@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#c90000">
+  <meta name="description" content="Chame a Borracharia Silva em Unaí-MG. Atendimento na borracharia ou no local.">
+  <link rel="manifest" href="manifest.webmanifest">
+  <title>Borracharia Silva | Socorro Rápido</title>
+  <style>
+    :root { --red:#c90000; --dark:#171717; --light:#f5f5f5; --green:#168342; }
+    * { box-sizing:border-box; }
+    body { margin:0; font-family:Arial,Helvetica,sans-serif; background:var(--light); color:var(--dark); }
+    header { background:var(--red); color:#fff; padding:26px 18px 24px; text-align:center; }
+    .tire { font-size:42px; }
+    h1 { margin:8px 0 4px; font-size:28px; }
+    header p { margin:0; font-size:15px; }
+    main { max-width:540px; margin:0 auto; padding:18px; }
+    .card { background:#fff; border-radius:16px; padding:18px; margin:0 0 14px; box-shadow:0 3px 12px #0000000d; }
+    h2 { margin:0 0 12px; font-size:19px; }
+    .btn { display:block; width:100%; border:0; border-radius:12px; padding:15px 14px; margin:10px 0; text-align:center; font-size:16px; font-weight:700; text-decoration:none; cursor:pointer; color:#fff; background:var(--red); }
+    .btn.green { background:var(--green); }
+    .btn.dark { background:var(--dark); }
+    .btn.light { background:#eee; color:#171717; border:1px solid #ddd; }
+    label { display:block; font-weight:700; margin:12px 0 6px; }
+    select, input, textarea { width:100%; padding:12px; border:1px solid #ccc; border-radius:9px; font:inherit; background:#fff; }
+    textarea { min-height:76px; resize:vertical; }
+    .note { font-size:13px; color:#555; line-height:1.5; }
+    footer { text-align:center; color:#666; font-size:12px; padding:12px 20px 26px; }
+  </style>
+</head>
+<body>
+<header>
+  <div class="tire">🛞</div>
+  <h1>BORRACHARIA SILVA</h1>
+  <p>Socorro rápido em Unaí-MG</p>
+</header>
+<main>
+  <section class="card">
+    <h2>Como podemos ajudar?</h2>
+    <a class="btn" href="#pedido">🔴 CHAMAR BORRACHEIRO</a>
+    <a class="btn light" href="https://www.google.com/maps/search/?api=1&query=Borracharia+Silva+Avenida+Governador+Valadares+97+Una%C3%AD+MG" target="_blank" rel="noopener">🏪 IR ATÉ A BORRACHARIA</a>
+    <a class="btn dark" href="https://wa.me/5538998547976?text=Ol%C3%A1%2C%20Borracharia%20Silva!%20Preciso%20de%20atendimento." target="_blank" rel="noopener">💬 FALAR PELO WHATSAPP</a>
+  </section>
+
+  <section class="card" id="pedido">
+    <h2>Solicitar atendimento</h2>
+    <form id="requestForm">
+      <label for="tipo">Onde precisa de atendimento?</label>
+      <select id="tipo" required>
+        <option value="Socorro no local">Socorro no local (rua/estrada)</option>
+        <option value="Atendimento na borracharia">Vou até a borracharia</option>
+      </select>
+
+      <label for="veiculo">Tipo de veículo</label>
+      <select id="veiculo" required>
+        <option>Carro</option><option>Moto</option><option>Caminhonete</option><option>Outro</option>
+      </select>
+
+      <label for="servico">Qual serviço precisa?</label>
+      <select id="servico" required>
+        <option>Conserto de pneu</option>
+        <option>Conserto de câmara</option>
+        <option>Troca de pneu</option>
+        <option>Outro serviço</option>
+      </select>
+
+      <label for="local">Endereço ou ponto de referência</label>
+      <input id="local" placeholder="Ex.: BR-..., posto, bairro..." />
+
+      <button type="button" class="btn light" id="locationBtn">📍 Usar minha localização</button>
+      <p class="note" id="locationStatus">A localização só será compartilhada se você autorizar no celular.</p>
+
+      <label for="detalhes">Detalhes (opcional)</label>
+      <textarea id="detalhes" placeholder="Conte brevemente o que aconteceu..."></textarea>
+      <button type="submit" class="btn green">ENVIAR PEDIDO PELO WHATSAPP</button>
+    </form>
+    <p class="note">O pedido será enviado pelo WhatsApp. Aguarde a confirmação do borracheiro antes de considerar o atendimento confirmado.</p>
+  </section>
+
+  <section class="card">
+    <h2>Endereço</h2>
+    <p><strong>Borracharia Silva</strong><br>Avenida Governador Valadares, nº 97, Unaí-MG<br>Próximo à Boca da Ponte, em frente ao Restaurante Casa de Vó.</p>
+    <a class="btn light" href="https://www.google.com/maps/search/?api=1&query=Borracharia+Silva+Avenida+Governador+Valadares+97+Una%C3%AD+MG" target="_blank" rel="noopener">ABRIR NO GOOGLE MAPS</a>
+    <a class="btn light" href="https://www.google.com/search?q=Borracharia+Silva+Una%C3%AD+MG+avaliar" target="_blank" rel="noopener">⭐ AVALIAR NO GOOGLE</a>
+  </section>
+</main>
+<footer>© Borracharia Silva · Unaí-MG</footer>
+<script>
+let coords = "";
+document.getElementById("locationBtn").addEventListener("click", () => {
+  const status = document.getElementById("locationStatus");
+  if (!navigator.geolocation) { status.textContent = "Este navegador não conseguiu acessar a localização. Digite o endereço manualmente."; return; }
+  status.textContent = "Obtendo localização...";
+  navigator.geolocation.getCurrentPosition(
+    pos => {
+      coords = `https://www.google.com/maps?q=${pos.coords.latitude},${pos.coords.longitude}`;
+      status.textContent = "Localização obtida! Ela será incluída na mensagem do WhatsApp.";
+    },
+    () => { status.textContent = "Não foi possível obter a localização. Permita o acesso ou digite o endereço manualmente."; },
+    { enableHighAccuracy: true, timeout: 12000 }
+  );
+});
+document.getElementById("requestForm").addEventListener("submit", e => {
+  e.preventDefault();
+  const tipo = document.getElementById("tipo").value;
+  const veiculo = document.getElementById("veiculo").value;
+  const servico = document.getElementById("servico").value;
+  const local = document.getElementById("local").value.trim() || "Não informado";
+  const detalhes = document.getElementById("detalhes").value.trim() || "Nenhum detalhe adicional";
+  const msg = `Olá, Borracharia Silva! Quero solicitar atendimento.%0A%0AAtendimento: ${encodeURIComponent(tipo)}%0AVeículo: ${encodeURIComponent(veiculo)}%0AServiço: ${encodeURIComponent(servico)}%0AEndereço/referência: ${encodeURIComponent(local)}%0ADetalhes: ${encodeURIComponent(detalhes)}${coords ? "%0ALocalização: " + encodeURIComponent(coords) : ""}`;
+  window.open(`https://wa.me/5538998547976?text=${msg}`, "_blank", "noopener");
+});
+if ("serviceWorker" in navigator && location.protocol.startsWith("http")) {
+  window.addEventListener("load", () => navigator.serviceWorker.register("./sw.js").catch(()=>{}));
+}
+</script>
+</body>
+</html>
